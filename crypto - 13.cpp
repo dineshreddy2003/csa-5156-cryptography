@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 
-// Function to calculate the modular inverse of a number
 int modInverse(int a, int m) {
     for (int x = 1; x < m; ++x) {
         if ((a * x) % m == 1) {
@@ -11,7 +10,6 @@ int modInverse(int a, int m) {
     return -1; // No inverse exists
 }
 
-// Function to compute the inverse of a 2x2 matrix
 void calculateInverseMatrix(int keyMatrix[][2], int inverse[][2]) {
     int det = (keyMatrix[0][0] * keyMatrix[1][1] - keyMatrix[0][1] * keyMatrix[1][0] + 26) % 26;
     int detInverse = modInverse(det, 26);
@@ -22,7 +20,6 @@ void calculateInverseMatrix(int keyMatrix[][2], int inverse[][2]) {
     inverse[1][1] = (keyMatrix[0][0] * detInverse) % 26;
 }
 
-// Function to decrypt Hill cipher
 void decryptHillCipher(char ciphertext[], int inverse[][2]) {
     int len = strlen(ciphertext);
     for (int i = 0; i < len; i += 2) {
